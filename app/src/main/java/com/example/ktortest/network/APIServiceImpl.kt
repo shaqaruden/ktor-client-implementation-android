@@ -12,6 +12,7 @@ class APIServiceImpl(private val client: HttpClient): APIService {
 
     override suspend fun getEmployees(): List<Employee> {
         return try {
+//            client.get { url(APIRoutes.EMPLOYEES) }.body()
             client.get { url("/statuscode/422") }.body()
         } catch (e: RedirectResponseException) {
             Log.d("3xx Error", e.response.status.description)
